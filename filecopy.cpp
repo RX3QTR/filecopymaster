@@ -7,6 +7,9 @@
 #include <QDebug>
 
 //#include <QDebug>
+//#include <QDir>
+//#include <QFile>
+
 
 // Функция копирования (перемещения) из папки в папку
 void filecopy::copy(QString strReadTempFile, QString strGetFiles, QString strPutFiles)
