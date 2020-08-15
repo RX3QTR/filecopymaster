@@ -13,6 +13,8 @@
 //#include "filecopy.h"
 //#include <QString>
 
+//==================
+
 
 // Функция копирования (перемещения) из папки в папку
 void filecopy::copy(QString strReadTempFile, QString strGetFiles, QString strPutFiles)
