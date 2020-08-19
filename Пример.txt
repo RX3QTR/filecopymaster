@@ -1,0 +1,24 @@
+// Функция наблюдает за папкой C:/maindir, в случае
+// появления в ней 3х файлов, создается temp.txt
+// с абсолютными путями к этим файлам.
+void viewdir::view(QString strPath, QString strTemp)
+{
+    QDir dirView(strPath);
+    QFile tempFile(strTemp);
+    dirView.setFilter(QDir::Files | QDir::NoDotAndDotDot);
+    int numfiles = dirView.count(); // Получаем к-во файлов в maindir
+    QByteArray buffer; // В эту переменную будем скидывать полученные пути к 3 файлам из maindir
+     if (numfiles == 3) // temp.txt создается если в maindir только 3 файла.
+       {
+         foreach(QFileInfo tmp, dirView.entryInfoList())
+          {
+             buffer += tmp.absoluteFilePath() + "\n"; // Получаем абсолютые пути к 3 файлам в maindir
+              if (tempFile.open(QIODevice::WriteOnly))
+               {
+                  tempFile.write(buffer); // Пишем пути к 3 файлам в temp.txt
+                  tempFile.close();
+               }
+          }
+       }
+     qDebug() << buffer;
+}
